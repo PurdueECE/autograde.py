@@ -13,36 +13,34 @@ def main(args):
     parser = argparse.ArgumentParser('grader')
     parser.add_argument(
         'path',
-        default='template',
-        help='path of the module to grade',
+        default='.',
+        help='Path of the module to grade. Defaults to ./',
     )
     parser.add_argument(
         '--submission',
-        default='assignment',
-        help='submission name to grade',
+        help='Submission name to grade.',
     )
     parser.add_argument(
         '--tests',
-        default='grader',
-        help='path of tests to run',
+        default='.',
+        help='Path of tests to run. Defaults to ./',
     )
     parser.add_argument(
         '--test-pattern',
         default='test*.py',
-        help='test name pattern to match',
+        help='Test name pattern to match. Defaults to "test*.py"',
     )
     parser.add_argument(
         '--output',
-        help='output file for scores',
+        help='Output file for scores. Defaults to stdout.',
     )
     parser.add_argument(
         '--log',
-        help='log file to use',
+        help='Log file to use. Defaults to stdout.',
     )
     parser.add_argument(
         '--config',
-        help='config file to use',
-        default=f'grader/config.json',
+        help='Config file to use.',
     )
     args = parser.parse_args(args)
 

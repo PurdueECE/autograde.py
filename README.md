@@ -2,24 +2,21 @@
 This grader can load specified tests in a desired loaction that match a specified pattern then run them against source code in another module. The results are collected in CSV format with configurable overrides for each test. Test runs can also change based on a custom submission name (e.g. student name). If grading the submission fails, it will fallback to grading a sepcified template submission directory. It can load a config file that can rename the submission directory to a custom label and can assign weights to individual tests. The help output for the grader is below:
 
 ```
-python -m grader -h
-usage: grader [-h] [--submission SUBMISSION] [--tests TESTS] [--test-pattern TEST_PATTERN] [--output OUTPUT] [--log LOG]
-              [--config CONFIG]
-              path
+usage: grader [-h] [--submission SUBMISSION] [--tests TESTS] [--test-pattern TEST_PATTERN] [--output OUTPUT] [--log LOG] [--config CONFIG] path
 
 positional arguments:
-  path                  path of the module to grade
+  path                  Path of the module to grade. Defaults to ./
 
 optional arguments:
   -h, --help            show this help message and exit
   --submission SUBMISSION
-                        submission name to grade
-  --tests TESTS         path of tests to run
+                        Submission name to grade.
+  --tests TESTS         Path of tests to run. Defaults to ./
   --test-pattern TEST_PATTERN
-                        test name pattern to match
-  --output OUTPUT       output file for scores
-  --log LOG             log file to use
-  --config CONFIG       config file to use
+                        Test name pattern to match. Defaults to "test*.py"
+  --output OUTPUT       Output file for scores. Defaults to stdout.
+  --log LOG             Log file to use. Defaults to stdout.
+  --config CONFIG       Config file to use.
 ```
 
 # Tests Discovery
