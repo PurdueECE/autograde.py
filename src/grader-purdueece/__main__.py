@@ -40,6 +40,7 @@ def main(args):
     )
     parser.add_argument(
         '--config',
+        default='config.json',
         help='Config file to use.',
     )
     args = parser.parse_args(args)

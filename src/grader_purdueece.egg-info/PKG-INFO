@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: grader-purdueece
-Version: 0.0.2
+Version: 0.0.3
 Summary: Python autograder for Purdue ECE department
 Author: Purdue ECE
 Project-URL: Homepage, https://github.com/PurdueECE/grader
