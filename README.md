@@ -1,28 +1,44 @@
 # Module Interface
-This grader can load specified tests in a desired loaction that match a specified pattern then run them against source code in another module. The results are collected in CSV format with configurable overrides for each test. Test runs can also change based on a custom submission name (e.g. student name). If grading the submission fails, it will fallback to grading a sepcified template submission directory. It can load a config file that can rename the submission directory to a custom label and can assign weights to individual tests. The help output for the grader is below:
+Run tests written with [`unittest`](https://docs.python.org/3/library/unittest.html) against a specified module.
+Additional options:
+* location of tests (if not in the current directory),
+* fallback module to run the tests against,
+* where to save a CSV of the test results, and
+* config file to specify how results are processed
 
 ```
-usage: grader [-h] [--submission SUBMISSION] [--tests TESTS] [--test-pattern TEST_PATTERN] [--output OUTPUT] [--log LOG] [--config CONFIG] path
+usage: grader [-h] [--fallback FALLBACK] [--submission SUBMISSION] [--tests TESTS]
+              [--test-pattern TEST_PATTERN] [--output OUTPUT] [--log LOG] [--config CONFIG]
+              path
 
 positional arguments:
-  path                  Path of the module to grade. Defaults to ./
+  path                  Module to grade
 
 optional arguments:
   -h, --help            show this help message and exit
+  --fallback FALLBACK   Fallback module to grade
   --submission SUBMISSION
                         Submission name to grade.
   --tests TESTS         Path of tests to run. Defaults to ./
   --test-pattern TEST_PATTERN
                         Test name pattern to match. Defaults to "test*.py"
-  --output OUTPUT       Output file for scores. Defaults to stdout.
+  --output OUTPUT       Output file for report. Defaults to stdout.
   --log LOG             Log file to use. Defaults to stdout.
   --config CONFIG       Config file to use.
 ```
 
 # Tests Discovery
-Tests to run can be located anywhere using a combination of the `--tests` and `--test-pattern` args. By default, they are searched for under the current directory and match the `test*.py` pattern. Tests are discovered using the [`unittest`](https://docs.python.org/3/library/unittest.html) module.
+Tests to run can be located anywhere using a combination of the `--tests` and `--test-pattern` args.
+By default, they are searched for under the current directory and match the `test*.py` pattern.
+Tests are discovered using the [`unittest`](https://docs.python.org/3/library/unittest.html) module.
 
-# Grader Config
+# Running Tests
+While tests are running, the script will change to the directory of `path`.
+This means that file locations in tests should be relative to the provided `path`.
+`--fallback` helps the module determine all tests that should be run.
+This is helpful when the code located at `path` is untrusted and may totally fail the test discovery step.
+
+# Config
 The grader config can be specified with the `--config` arg. It is a json file that can specify what happens when a certain test runs or when a certain submission is graded. Individual test configs should be under the `"tests"` map and the key should be of the form: `testFunction (test_filename.TestCaseName)`. Inividual submission configs should be under the `"submissions"` map and match the name of the submission. An example format is below:
 
 ```json
@@ -33,7 +49,7 @@ The grader config can be specified with the `--config` arg. It is a json file th
             "weight": 2
         }
     },
-    "submissions": {
+    "names": {
         "submission_name": {
             "name": "custom label here"
         }
