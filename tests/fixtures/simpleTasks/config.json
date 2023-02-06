@@ -1,0 +1,27 @@
+{
+    "tests": {
+        "test_writePyramids1 (tests_grader.WritePyramidsTestCase)": {
+            "name": "Write Pyramids 1",
+            "weight": 1
+        },
+        "test_writePyramids2 (tests_grader.WritePyramidsTestCase)": {
+            "name": "Write Pyramids 2",
+            "weight": 2
+        },
+        "test_getStreaks1 (tests_grader.GetStreaksTestCase)": {
+            "name": "Get Streaks 1",
+            "weight": 1
+        },
+        "test_getStreaks2 (tests_grader.GetStreaksTestCase)": {
+            "name": "Get Streaks 2",
+            "weight": 1
+        },
+        "test_getStreaks3 (tests_grader.GetStreaksTestCase)": {
+            "name": "Get Streaks 3",
+            "weight": 1
+        }
+    },
+    "submissions": {
+        "submission1": { "name": "mysubmission" }
+    }
+}
