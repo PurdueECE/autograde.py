@@ -1,3 +1,9 @@
+# Installation
+```
+pip install autograde.py
+```
+
+
 # Module Interface
 Run tests written with [`unittest`](https://docs.python.org/3/library/unittest.html) against a specified module.
 Additional options:
