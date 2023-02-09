@@ -1,16 +1,22 @@
 Metadata-Version: 2.1
 Name: autograde.py
-Version: 0.0.1
+Version: 0.0.2
 Summary: Run tests written with unittest against a specified module.
 Author-email: Geoff Cramer <cramerg@purdue.edu>
-Project-URL: Homepage, https://github.com/PurdueECE/grader
-Project-URL: Bug Tracker, https://github.com/PurdueECE/grader/issues
+Project-URL: Homepage, https://github.com/PurdueECE/autograde.py
+Project-URL: Bug Tracker, https://github.com/PurdueECE/autograde.py/issues
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
 Requires-Python: >=3.7
 Description-Content-Type: text/markdown
 License-File: LICENSE
+
+# Installation
+```
+pip install autograde.py
+```
+
 
 # Module Interface
 Run tests written with [`unittest`](https://docs.python.org/3/library/unittest.html) against a specified module.
