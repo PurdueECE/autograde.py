@@ -16,7 +16,7 @@ def test_template_config():
         [
             "tests/fixtures/collectionTasks/template",
             "--tests",
-            "tests/fixtures/collectionTasks/tests/",
+            "tests/fixtures/collectionTasks/tests",
             "--submission",
             "submission1",
             "--config",
@@ -30,7 +30,7 @@ def test_solution():
         [
             "tests/fixtures/collectionTasks/solution",
             "--tests",
-            "tests/fixtures/collectionTasks/tests/",
+            "tests/fixtures/collectionTasks/tests",
         ]
     )
 
@@ -40,7 +40,7 @@ def test_solution_fallback():
         [
             "tests/fixtures/collectionTasks/solution",
             "--tests",
-            "tests/fixtures/collectionTasks/tests/",
+            "tests/fixtures/collectionTasks/tests",
             "--fallback",
             "tests/fixtures/collectionTasks/template",
         ]

@@ -5,8 +5,10 @@ import json
 import logging
 import os
 import re
+import shutil
 import subprocess
 import sys
+import tempfile
 
 
 def main(args):
@@ -105,12 +107,13 @@ def main(args):
 
 def grade(path, args, conf):
     results = None
-    cwd = os.getcwd()
+
     try:
-        os.chdir(path)
-        subprocess.run(
-            f"cp -r {cwd}/{args.tests} ./", shell=True, check=True, timeout=10
-        )
+        cwd = os.getcwd()
+        tmp = tempfile.mkdtemp()
+        os.chdir(tmp)
+        shutil.copytree(f"{cwd}/{path}", "./", dirs_exist_ok=True)
+        shutil.copytree(f"{cwd}/{args.tests}", "./", dirs_exist_ok=True)
         proc = subprocess.run(
             f"python3 -m unittest discover -vp {args.test_pattern}",
             stdout=subprocess.PIPE,
@@ -123,7 +126,10 @@ def grade(path, args, conf):
     except Exception as e:
         logging.exception(f"Exception while grading {path}\n")
         logging.exception(f'{e.output if hasattr(e, "output") else ""}\n')
-    os.chdir(cwd)
+    finally:
+        os.chdir(cwd)
+        shutil.rmtree(tmp)
+
     return results
 
 
