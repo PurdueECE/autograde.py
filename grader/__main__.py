@@ -60,10 +60,11 @@ def main(args):
     logging.debug(f"Args:\n{args}\n\n")
 
     # load configs
-    if args.config:
+    try:
         with open(args.config) as f:
             conf = json.load(f)
-    else:
+    except Exception as e:
+        logging.exception(f"Error while loding config file: {e}")
         conf = {}
     logging.debug(f"Config:\n{json.dumps(conf, indent=4)}\n\n")
     sconf: dict = conf.get("submissions", {}).get(args.submission, {})
