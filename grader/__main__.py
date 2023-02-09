@@ -108,7 +108,9 @@ def grade(path, args, conf):
     cwd = os.getcwd()
     try:
         os.chdir(path)
-        subprocess.run(f"cp -r {args.tests} ./", shell=True, check=True, timeout=10)
+        subprocess.run(
+            f"cp -r {cwd}/{args.tests} ./", shell=True, check=True, timeout=10
+        )
         proc = subprocess.run(
             f"python3 -m unittest discover -vp {args.test_pattern}",
             stdout=subprocess.PIPE,
