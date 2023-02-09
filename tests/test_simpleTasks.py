@@ -6,7 +6,7 @@ def test_template():
         [
             "tests/fixtures/simpleTasks/template",
             "--tests",
-            "tests/fixtures/simpleTasks/",
+            "tests/fixtures/simpleTasks/tests/",
         ]
     )
 
@@ -16,11 +16,11 @@ def test_template_config():
         [
             "tests/fixtures/simpleTasks/template",
             "--tests",
-            "tests/fixtures/simpleTasks/tests_grader.py",
+            "tests/fixtures/simpleTasks/tests/",
             "--submission",
             "submission1",
             "--config",
-            "tests/fixtures/simpleTasks/config.json",
+            "tests/fixtures/simpleTasks/tests/config.json",
         ]
     )
 
@@ -30,8 +30,18 @@ def test_solution():
         [
             "tests/fixtures/simpleTasks/solution",
             "--tests",
-            "tests/fixtures/simpleTasks/",
-            "--log",
-            "grader.log",
+            "tests/fixtures/simpleTasks/tests/",
+        ]
+    )
+
+
+def test_solution_fallback():
+    main(
+        [
+            "tests/fixtures/simpleTasks/solution",
+            "--tests",
+            "tests/fixtures/simpleTasks/tests/",
+            "--fallback",
+            "tests/fixtures/simpleTasks/template",
         ]
     )

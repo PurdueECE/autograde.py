@@ -22,6 +22,8 @@
         }
     },
     "submissions": {
-        "submission1": { "name": "mysubmission" }
+        "submission1": {
+            "name": "My Submission"
+        }
     }
 }

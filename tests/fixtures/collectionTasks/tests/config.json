@@ -1,0 +1,78 @@
+{
+    "tests": {
+        "Component Group 1": {
+            "weight": 1
+        },
+        "Component Group 2": {
+            "weight": 1
+        },
+        "Student Group 1": {
+            "weight": 1
+        },
+        "Student Group 2": {
+            "weight": 1
+        },
+        "Student Group 3": {
+            "weight": 1
+        },
+        "Student Group 4": {
+            "weight": 1
+        },
+        "Missing Project ID 1": {
+            "weight": 1
+        },
+        "Missing Project ID 2": {
+            "weight": 1
+        },
+        "Project Pair 1": {
+            "weight": 1
+        },
+        "Project Pair 2": {
+            "weight": 1
+        },
+        "Project ID 1": {
+            "weight": 1
+        },
+        "Project ID 2": {
+            "weight": 1
+        },
+        "Project ID 3": {
+            "weight": 1
+        },
+        "Project ID 4": {
+            "weight": 1
+        },
+        "Missing Project ID": {
+            "weight": 1
+        },
+        "Missing Student": {
+            "weight": 1
+        },
+        "Student 1": {
+            "weight": 1
+        },
+        "Student 2": {
+            "weight": 1
+        },
+        "Student 3": {
+            "weight": 1
+        },
+        "Student 4": {
+            "weight": 1
+        },
+        "Cost of Projects": {
+            "weight": 1
+        },
+        "Component Group 3": {
+            "weight": 1
+        },
+        "Component Group 4": {
+            "weight": 1
+        }
+    },
+    "submissions": {
+        "submission1": {
+            "name": "mysubmission"
+        }
+    }
+}

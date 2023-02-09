@@ -49,7 +49,7 @@ def main(args):
     )
     args = parser.parse_args(args)
 
-    # setup logging
+    # logging
     logging.basicConfig(
         level=logging.DEBUG,
         format="%(asctime)s:%(levelname)s:%(name)s:%(message)s",
@@ -59,7 +59,7 @@ def main(args):
     )
     logging.debug(f"Args:\n{args}\n\n")
 
-    # load configs
+    # setup
     try:
         with open(args.config) as f:
             conf = json.load(f)
@@ -69,8 +69,6 @@ def main(args):
     logging.debug(f"Config:\n{json.dumps(conf, indent=4)}\n\n")
     sconf: dict = conf.get("submissions", {}).get(args.submission, {})
     logging.debug(f"Submission Config:\n{json.dumps(sconf, indent=4)}\n\n")
-
-    # setup outputs
     scores = {
         "name": sconf.get("name", args.submission or ""),
         "time": datetime.now().isoformat(),
@@ -87,11 +85,16 @@ def main(args):
     else:
         results = results1.copy()
 
-    # store scores
+    # check results
+    if not results:
+        logging.error("No tests were run")
+        sys.exit(os.EX_OSERR)
+
+    # parse results
     for label, test in results.items():
         scores[label] = test.get("score", 0)
 
-    # results
+    # store results
     logging.info(f"Scores:\n{json.dumps(scores, indent=4)}\n\n")
     if args.output:
         with open(args.output, "w") as f:
@@ -105,8 +108,9 @@ def grade(path, args, conf):
     cwd = os.getcwd()
     try:
         os.chdir(path)
+        subprocess.run(f"cp -r {args.tests} ./", shell=True, check=True, timeout=10)
         proc = subprocess.run(
-            f"python3 -m unittest discover -vs {cwd}/{args.tests} -p {args.test_pattern}",
+            f"python3 -m unittest discover -vp {args.test_pattern}",
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             shell=True,

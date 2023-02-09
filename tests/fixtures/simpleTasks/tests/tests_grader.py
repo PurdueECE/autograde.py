@@ -17,13 +17,13 @@ class WritePyramidsTestCase(unittest.TestCase):
     def test_writePyramids1(self):
         randomFileName = f"{str(uuid4())}.txt"
         tasks.writePyramids(randomFileName, 13, 6, "X")
-        areEqual = areFilesEqual(randomFileName, f"../pyramid13.txt")
+        areEqual = areFilesEqual(randomFileName, f"pyramid13.txt")
         self.assertTrue(areEqual)
 
     def test_writePyramids2(self):
         randomFileName = f"{str(uuid4())}.txt"
         tasks.writePyramids(randomFileName, 15, 5, "*")
-        areEqual = areFilesEqual(randomFileName, f"../pyramid15.txt")
+        areEqual = areFilesEqual(randomFileName, f"pyramid15.txt")
         self.assertTrue(areEqual)
 
 
